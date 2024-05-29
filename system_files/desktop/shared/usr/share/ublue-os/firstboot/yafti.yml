@@ -6,7 +6,7 @@ screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to Bazzite"
+      title: "Welcome to Bazzite (Steam Deck & HTPC Edition)"
       icon: "/usr/share/ublue-os/bazzite/logo.svg"
       description: |
         Configure your system to get started. This utility can be re-opened at any time, so don't feel like you have to get it perfect your first go-through.
@@ -22,8 +22,36 @@ screens:
           default: true
           packages:
           - Set input group: sudo -A ujust add-user-to-input-group
-        Install Big Picture Mode Startup Video:
-          description: Adds a Bazzite themed startup video for Steam's Big Picture Mode.
+        BIOS &amp; Firmware Updates:
+          description: Enables BIOS &amp; Firmware updates for Steam Deck hardware
+          default: true
+          packages:
+          - Enable Updates: sudo -A ujust enable-deck-bios-firmware-updates
+        Decky Loader:
+          description: A plugin loader for the Steam Deck
+          default: false
+          packages:
+          - Retrieve Decky: sudo -A ujust setup-decky install
+        EmuDeck:
+          description: |
+            A utility for installing and configuring emulators on the Steam Deck
+          default: false
+          packages:
+          - Retrieve EmuDeck: ujust get-emudeck
+        Sunshine:
+          description: A self-hosted game stream host for Moonlight
+          default: false
+          packages:
+          - Install Sunshine: ujust setup-sunshine install
+          - Autostart Sunshine: ujust setup-sunshine autostart
+        Hide GRUB Menu:
+          description: |
+            NOTE: Press the escape key before boot to show the menu
+          default: true
+          packages:
+          - Hide GRUB: sudo -A ujust configure-grub hide
+        Install Game Mode Startup Video:
+          description: Adds a Bazzite themed startup video for Steam's game mode.
           default: true
           packages:
           - Install Video: ujust install-gamemode-video
@@ -32,37 +60,26 @@ screens:
           default: true
           packages:
           - Fix Download Speed: ujust fix-steam-download-speed
-        Sunshine:
-          description: A self-hosted game stream host for Moonlight
-          default: false
-          packages:
-          - Install Sunshine: ujust setup-sunshine install
-          - Autostart Sunshine: ujust setup-sunshine autostart
-        EmuDeck:
-          description: A utility for installing and configuring emulators.
-          default: false
-          packages:
-          - Retrieve EmuDeck: ujust install-emudeck
-        OpenRazer:
-          description: Enables additional capabilities for Razer Hardware
-          default: false
-          packages:
-          - Install OpenRazer: ujust install-openrazer
-        OpenTabletDriver:
-          description: Open source, cross-platform, user-mode tablet driver
-          default: false
-          packages:
-          - Install OpenTabletDriver: ujust install-opentabletdriver
         Oversteer:
           description: Application to control supported steering wheels
           default: false
           packages:
           - Install Oversteer: ujust install-oversteer
+        OpenRazer:
+          description: Enables additional capabilities for Razer Hardware
+          default: false
+          packages:
+          - Install OpenRazer: ujust install-openrazer
         Wootility:
           description: A configurator for Wooting keyboards
           default: false
           packages:
           - Retrieve Wootility: ujust install-wootility
+        OpenTabletDriver:
+          description: Open source, cross-platform, user-mode tablet driver
+          default: false
+          packages:
+          - Install OpenTabletDriver: ujust install-opentabletdriver
         Resilio Sync:
           description: A file synchronization utility powered by BitTorrent
           default: false
@@ -73,27 +90,16 @@ screens:
           default: false
           packages:
           - Install scrcpy: ujust install-scrcpy
-  amd-additions:
-    source: yafti.screen.package
-    values:
-      title: AMD Additions
-      condition:
-        run: grep -qv 'nvidia' <<< $(jq -r '."image-flavor"' < /usr/share/ublue-os/image-info.json)
-      show_terminal: true
-      package_manager: yafti.plugin.run
-      packages:
-        - LACT (GPU Overclocking): ujust install-lact
-  nvidia-additions:
-    source: yafti.screen.package
-    values:
-      title: Nvidia Additions
-      condition:
-        run: grep -q 'nvidia' <<< $(jq -r '."image-flavor"' < /usr/share/ublue-os/image-info.json)
-      show_terminal: true
-      package_manager: yafti.plugin.run
-      packages:
-        - GreenWithEnvy (GPU Overclocking): flatpak install --user --noninteractive com.leinardi.gwe
-        - Supergfxctl (Hybrid GPU Switching): ujust enable-supergfxctl
+        SteamCMD:
+          description: Installs SteamCMD
+          default: true
+          packages:
+          - Install SteamCMD: ujust install-steamcmd
+        Use EXT4 for SD Cards:
+          description: Disable BTRFS support for SD cards for direct compatibility with SD cards formatted on stock SteamOS (Not recommended).
+          default: false
+          packages:
+          - Switch SteamOS-BTRFS config to EXT4: sudo -A ujust switch-to-ext4
   applications:
     source: yafti.screen.package
     values:
@@ -120,9 +126,10 @@ screens:
           packages:
           - BoilR: io.github.philipk.boilr
           - Bottles: com.usebottles.bottles
-          - Chiaki (PlayStation Remote Play): re.chiaki.Chiaki
-          - Discord: com.discordapp.Discord
+          - Chiaki4Deck (PlayStation Remote Play): io.github.streetpea.Chiaki4deck
+          - Discord (Discover Overlay Included): com.discordapp.Discord
           - DOSBox Staging: io.github.dosbox-staging
+          - Fightcade: com.fightcade.Fightcade
           - GeForce NOW Electron: io.github.hmlendea.geforcenow-electron
           - Greenlight: io.github.unknownskl.greenlight
           - Heroic Games Launcher (GOG &amp; Epic): com.heroicgameslauncher.hgl
@@ -134,7 +141,6 @@ screens:
           - Mumble: info.mumble.Mumble
           - OpenMW: org.openmw.OpenMW
           - osu: sh.ppy.osu
-          - Parsec: com.parsecgaming.parsec
           - Space Cadet Pinball: com.github.k4zmu2a.spacecadetpinball
           - Sonic Robo Blast 2: org.srb2.SRB2
           - Sonic Robo Blast 2 Kart: org.srb2.SRB2Kart
@@ -144,7 +150,7 @@ screens:
           - TeamSpeak: com.teamspeak.TeamSpeak
           - XIV Launcher (Final Fantasy XIV): dev.goats.xivlauncher
         Emulation:
-          description: Play games like it's 1972
+          description: Play games like it's 1972 (Leave these all unchecked if you're planning to use EmuDeck)
           default: false
           packages:
           - Cemu: info.cemu.Cemu
@@ -210,15 +216,13 @@ screens:
           - Bitwarden: com.bitwarden.desktop
           - Calibre: com.calibre_ebook.calibre
           - DejaDup: org.gnome.DejaDup
-          - Easy Effects: com.github.wwmm.easyeffects
           - Fedora Media Writer: org.fedoraproject.MediaWriter
           - Gradience: com.github.GradienceTeam.Gradience
-          - JamesDSP: me.timschneeberger.jdsp4linux
           - KeePassXC: org.keepassxc.KeePassXC
+          - Main Menu: page.codeberg.libre_menu_editor.LibreMenuEditor
           - Metadata Cleaner: fr.romainvigier.MetadataCleaner
           - OpenRGB: org.openrgb.OpenRGB
           - Pika Backup: org.gnome.World.PikaBackup
-          - PinApp: io.github.fabrialberio.pinapp
           - qBittorrent: org.qbittorrent.qBittorrent
           - Resources: net.nokyan.Resources
           - SaveDesktop: io.github.vikdevelop.SaveDesktop
@@ -234,7 +238,7 @@ screens:
       - "Install More Applications":
           run: /usr/bin/plasma-discover
       - "Documentation":
-          run: /usr/bin/xdg-open https://universal-blue.discourse.group/docs?category=5
+          run: /usr/bin/xdg-open https://docs.bazzite.gg
       - "Forums":
           run: /usr/bin/xdg-open https://universal-blue.discourse.group/c/bazzite/5
       - "Join the Discord Community":
@@ -242,4 +246,4 @@ screens:
       - "Reboot now":
           run: systemctl reboot
       description: |
-        Thank you for trying Bazzite. Please reboot to apply changes made by this setup utility.
+        Thank you for trying Bazzite (Steam Deck Edition). Please reboot to apply changes made by this setup utility.
