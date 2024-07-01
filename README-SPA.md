@@ -57,7 +57,7 @@ Bazzite es creado con [ublue-os/main](https://github.com/ublue-os/main) y [ublue
 - Incluida una [extensión de la shell para mostrar las propiedades de ROMs](https://github.com/GerbilSoft/rom-properties) (usados para la emulación de consolas) en el navegador de archivos.
 - Soporte completo para [Winesync/Fastsync/NTsync](https://github.com/Frogging-Family/wine-tkg-git/issues/936).
 - [Distrobox](https://github.com/89luca89/distrobox) pre-instalado con actualizaciones automáticas para los contenedores creados.
-- Se usa por defecto la [terminal Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) en todas las imágenes. Esta terminal esta especificamente diseñada para el flujo de trabajo basado en contenedores que usamos en Bazzite. Si deseas regresar a como estaba antes, simplemente ejecuta el siguiente comando en una terminal: `ujust _restore-original-terminal`
+- Se usa por defecto la [terminal Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) en todas las imágenes. Esta terminal esta especificamente diseñada para el flujo de trabajo basado en contenedores que usamos en Bazzite.
 - Servicio automatizado `duperemove` incluido para reducir el espacio de disco utilizados por los contenidos de los prefijos de WINE.
 - Soporte de HDMI CEC (para poder controlar todos los dispositivos conectados por HDMI) usando [libCEC](https://libcec.pulse-eight.com/).
 - [System76-Scheduler](https://github.com/pop-os/system76-scheduler) pre-instalado, proveyendo ajustes automáticos de la prioridad de procesos a tu aplicación actualmente en uso, manteniendo al mínimo el tiempo que tu procesador (CPU) trabaja con procesos de fondo.
