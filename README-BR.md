@@ -57,7 +57,7 @@ O Bazzite é feito a partir do [ublue-os/main](https://github.com/ublue-os/main)
 - [Extensão do shell ROM Properties Page](https://github.com/GerbilSoft/rom-properties) inclusa.
 - Suporte completo a [Winesync/Fastsync/NTsync](https://github.com/Frogging-Family/wine-tkg-git/issues/936).
 - [Distrobox](https://github.com/89luca89/distrobox) pré-instalado com atualizações automáticas pra containers criados pelo usuário.
-- [Ptyxis Terminal](https://gitlab.gnome.org/chergert/ptyxis) é utilizado como terminal padrão em todas as imagens. Esse terminal é feito especialmente para o workflow em containers que você deve usar no Bazzite. Se desejar restaurar o terminal padrão do Fedora, execute `ujust _restore-original-terminal`
+- [Ptyxis Terminal](https://gitlab.gnome.org/chergert/ptyxis) é utilizado como terminal padrão em todas as imagens. Esse terminal é feito especialmente para o workflow em containers que você deve usar no Bazzite.
 - Serviço `duperemove` automatizado para reduzir o espaço em disco usado por arquivos em prefixos do wine.
 - Suporte a HDMI CEC via [libCEC](https://libcec.pulse-eight.com/).
 - [System76-Scheduler](https://github.com/pop-os/system76-scheduler) pré-instalado,  provendo ajustes automáticos de prioridade favorecendo o processo em primeiro plano e mantendo o mínimo de tempo de CPU necessário para outros processos.
