@@ -58,7 +58,7 @@ Bazzite是使用[Fedora](https://fedoraproject.org/)技术基于[ublue-os/main](
 - 包含[ROM Properties Page shell extension](https://github.com/GerbilSoft/rom-properties) 。
 - 完全支持 [Winesync/Fastsync/NTsync](https://github.com/Frogging-Family/wine-tkg-git/issues/936).
 - 预装[Distrobox](https://github.com/89luca89/distrobox) 并添加了已创建容器的自动更新。
-- [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) 用作所有镜像的默认终端。此终端专为你将在Bazzite中使用的容器工作流设计。如果你想切换回原始终端，请运行 `ujust _restore-original-terminal` 。
+- [Ptyxis](https://gitlab.gnome.org/chergert/ptyxis) 用作所有镜像的默认终端。此终端专为你将在Bazzite中使用的容器工作流设计。
 - `duperemove`服务进程用于减少wine前缀内容所占用的磁盘空间。
 - 通过[libCEC](https://libcec.pulse-eight.com/)支持HDMI CEC。
 - 预装[System76-Scheduler](https://github.com/pop-os/system76-scheduler)，为你的重点应用程序提供自动的进程优先级调整，并将后台进程的CPU时间保持在最低限度。
